@@ -3,23 +3,16 @@ services:
   marketplace-ui:
 
     # change image name to your dockerhub username and repository name
-    image: "alexbobrenko/marketplace-ui"
+    image: "marketplace-ui"
 
     # restart only if the container exits with a non-zero exit code
     restart: on-failure
 
-    # build the image from the Dockerfile in the current directory
-    build: 
+    # build the production image from the Dockerfile in the current directory
+    build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
 
     # map port 3000 on the host to port 3000 in the container
-    ports: 
+    ports:
       - "3000:3000"
-
-    # mount the current directory to /usr/app in the container and also mount node_modules to avoid conflicts
-    volumes:
-      - /usr/app/node_modules
-      - .:/usr/app
-      - ~/.ssh:/root/.ssh:ro          # git SSH access
-      - ~/.gitconfig:/root/.gitconfig:ro  # git identity
