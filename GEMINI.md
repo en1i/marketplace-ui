@@ -33,6 +33,10 @@ No test framework is currently configured.
 - **Package manager:** Yarn
 - **Fonts:** Geist and Geist Mono via `next/font/google`
 
+## Docs
+
+- Project setup and deployment guide: [`app/docs/deployment.md`](app/docs/deployment.md)
+
 ---
 
 ## Synchronization Policy
