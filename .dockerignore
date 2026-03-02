@@ -2,6 +2,12 @@ node_modules
 dist
 .next
 .git
+.gitignore
 .vscode
-npm-debug.log
-yarn-error.log
+.idea
+.devcontainer
+.env
+.env.*
+*.log
+npm-debug.log*
+yarn-error.log*
