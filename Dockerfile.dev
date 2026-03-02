@@ -16,4 +16,4 @@ RUN yarn install --frozen-lockfile
 
 EXPOSE 3000
 
-CMD ["npm", "run", "dev", "--", "-H", "0.0.0.0", "-p", "3000"]
+CMD ["yarn", "dev", "--", "-H", "0.0.0.0", "-p", "3000"]
