@@ -5,13 +5,15 @@ RUN corepack enable && corepack prepare yarn@1.22.22 --activate
 
 # Required for git SSH remotes inside the container.
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends openssh-client \
+  && apt-get install -y --no-install-recommends git openssh-client \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/app
 
 # Install deps into the image/volume seed layer.
-COPY package.json yarn.lock ./
+COPY --chown=node:node package.json yarn.lock ./
+RUN chown node:node /usr/app
+USER node
 RUN yarn install --frozen-lockfile
 
 EXPOSE 3000

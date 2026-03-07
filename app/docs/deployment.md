@@ -40,7 +40,7 @@ This reduces accidental leakage of local machine details into prod-like workflow
 
 `Dockerfile.dev` pins Yarn via Corepack and starts dev server by default:
 
-- `CMD ["npm", "run", "dev", "--", "-H", "0.0.0.0", "-p", "3000"]`
+- `CMD ["yarn", "dev", "--", "-H", "0.0.0.0", "-p", "3000"]`
 
 `devcontainer.json` forwards port `3000` and auto-opens it in the browser.
 
@@ -69,6 +69,7 @@ Inside container terminal:
 whoami
 node -v
 npm -v
+yarn -v
 git remote -v
 ```
 
@@ -81,7 +82,7 @@ Expected:
 ## Troubleshooting
 
 - App not reachable on `localhost:3000`:
-  - Check container logs and terminal where `npm run dev` starts.
+  - Check container logs and terminal where `yarn dev` starts.
   - Rebuild container: `Dev Containers: Rebuild and Reopen in Container`.
 - SSH git fails:
   - Ensure local `~/.ssh` and `~/.gitconfig` exist and are valid.
