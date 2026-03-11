@@ -31,7 +31,7 @@ No test framework is currently configured.
 - **React Compiler:** Enabled in `next.config.ts` for automatic memoization
 - **Path alias:** `@/*` maps to the project root
 - **Package manager:** Yarn
-- **Fonts:** Geist and Geist Mono via `next/font/google`
+- **Fonts:** Local system sans and mono stacks via CSS custom properties
 
 ## Docs
 

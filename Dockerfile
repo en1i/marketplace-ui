@@ -22,7 +22,7 @@ ENV NODE_ENV=production
 COPY --from=builder /usr/app/public ./public
 COPY --from=builder /usr/app/.next/standalone ./
 COPY --from=builder /usr/app/.next/static ./.next/static
-
+USER node
 EXPOSE 3000
 
 # When using 'standalone', you run the server.js file directly with Node
