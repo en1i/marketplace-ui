@@ -35,7 +35,7 @@ No test framework is currently configured.
 
 ## Docs
 
-- Project setup and deployment guide: [`app/docs/deployment.md`](app/docs/deployment.md)
+- Project setup and deployment guide: [`docs/deployment.md`](docs/deployment.md)
 
 ---
 
