@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Marketplace UI
+
+Frontend for [alphagranny.com](https://alphagranny.com) — a Next.js 16 app with React 19, TypeScript, and Tailwind CSS 4.
+
+Production: `https://alphagranny.com`
 
 ## Getting Started
 
