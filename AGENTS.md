@@ -26,12 +26,27 @@ No test framework is currently configured.
 ## Architecture
 
 - **Routing:** Next.js App Router (`app/` directory), file-based routing
-- **Styling:** Tailwind CSS 4 with CSS custom properties for theming; dark mode via `prefers-color-scheme`
+- **Styling:** Tailwind CSS 4. Design system tokens in `styles/` — see below. Dark mode intentionally absent (AlphaGranny is light-only).
 - **Linting/Formatting:** Biome (not ESLint/Prettier) — 2-space indentation, auto import organization
 - **React Compiler:** Enabled in `next.config.ts` for automatic memoization
 - **Path alias:** `@/*` maps to the project root
 - **Package manager:** Yarn
-- **Fonts:** Local system sans and mono stacks via CSS custom properties
+- **Fonts:** Aptos (Microsoft, free) — ttf files in `public/fonts/`. Weights used: Regular (400), SemiBold (600), Bold (700), ExtraBold (800).
+
+### Design System (`styles/`)
+
+| File | Purpose |
+| ---- | ------- |
+| `styles/tokens.css` | All `:root` CSS custom properties — names match design doc verbatim |
+| `styles/theme.css` | `@theme inline {}` — maps tokens to Tailwind utilities (`bg-page`, `text-ink`, `rounded-pill`, etc.) |
+| `styles/typography.css` | 9-step type scale as `@layer utilities` (`.text-display-lg` → `.text-body-xs`, `.text-label`) |
+| `styles/base.css` | `@font-face`, `body` defaults, `:focus-visible` ring |
+
+`app/globals.css` imports these in order after `tailwindcss`.
+
+**Tailwind utility naming:** design-doc token names (`--color-bg-page`, `--color-text-primary`) are preserved in `tokens.css`. `theme.css` maps them to shorter Tailwind names (`bg-page`, `text-ink`).
+
+**Border colors** have no Tailwind utility — use CSS vars directly: `border-[var(--color-border-warm)]`.
 
 ## Docs
 

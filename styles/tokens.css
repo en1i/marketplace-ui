@@ -1,0 +1,79 @@
+/* AlphaGranny Design System — CSS custom properties (source of truth) */
+/* All token names match the design doc verbatim. No Tailwind references here. */
+
+:root {
+  /* ── Surfaces ─────────────────────────────────────────── */
+  --color-bg-page: #faf8f5; /* cream page background */
+  --color-bg-warm: #eadbc2; /* sandy cream — hero, footer, promo blocks */
+  --color-bg-surface: #ffffff; /* inputs, cards, product card body */
+  --color-bg-soft: #f0ede8; /* tertiary surface — category panel hover */
+
+  /* ── Brand ────────────────────────────────────────────── */
+  --color-brand-primary: #f1641e; /* logo + accent badges only */
+  --color-brand-primary-hover: #d9531a;
+
+  /* ── Ink / Text ───────────────────────────────────────── */
+  --color-text-primary: #312b36; /* near-black plum — default body & headings */
+  --color-text-muted: #6b5f54; /* warm taupe for secondary copy on cream */
+  --color-text-soft: #888888; /* tertiary/meta */
+  --color-text-inverse: #faf8f5; /* on dark surfaces */
+
+  /* ── Dark surfaces (signature) ────────────────────────── */
+  --color-surface-dark: #2f203c; /* deep plum — cart pill, dark CTAs */
+  --color-surface-dark-2: #312b36; /* slightly cooler plum for chips/borders */
+
+  /* ── Editorial accents ────────────────────────────────── */
+  --color-accent-lilac: #ddd0e6; /* mascot hat, soft chips */
+  --color-accent-blush: #f4d8d0; /* optional warm highlight */
+  --color-accent-green: #a3d277; /* success badge */
+
+  /* ── Borders ──────────────────────────────────────────── */
+  --color-border-warm: #c4b8a8; /* primary border on cream */
+  --color-border-strong: #312b36; /* high-contrast outlines */
+  --color-border-subtle: rgba(49, 43, 54, 0.15);
+
+  /* ── System ───────────────────────────────────────────── */
+  --color-success: #3a8b5d;
+  --color-warning: #e7a33e;
+  --color-danger: #b3261e;
+  --color-focus: #1f6feb;
+
+  /* ── Typography ───────────────────────────────────────── */
+  --font-ui:
+    "Aptos", -apple-system, "Helvetica Neue", "Droid Sans", Arial, sans-serif;
+
+  /* ── Spacing (4 px base) ──────────────────────────────── */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px; /* default grid gap */
+  --space-5: 24px;
+  --space-6: 32px; /* default section gap */
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* ── Radius ────────────────────────────────────────────── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  /* ── Elevation ────────────────────────────────────────── */
+  --shadow-sm: 0 1px 2px rgba(49, 43, 54, 0.06);
+  --shadow-md: 0 2px 6px rgba(49, 43, 54, 0.12);
+  --shadow-lg: 0 10px 24px rgba(49, 43, 54, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(31, 111, 235, 0.35);
+
+  /* ── Motion ───────────────────────────────────────────── */
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1);
+  --duration-1: 120ms;
+  --duration-2: 200ms;
+  --duration-3: 320ms;
+
+  /* ── Breakpoints (reference — use @media or Tailwind) ─── */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+}
