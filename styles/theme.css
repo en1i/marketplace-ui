@@ -1,0 +1,66 @@
+/* AlphaGranny Design System — Tailwind 4 theme registration */
+/* Maps design token CSS vars to clean Tailwind utility names. */
+/* Design-doc names live in tokens.css; Tailwind names live here. */
+/*                                                                */
+/* Usage examples:                                               */
+/*   bg-page        → background: var(--color-bg-page)          */
+/*   text-ink       → color: var(--color-text-primary)          */
+/*   rounded-pill   → border-radius: var(--radius-pill)         */
+/*   shadow-focus   → box-shadow: var(--shadow-focus)           */
+/*                                                                */
+/* Border colors are NOT mapped here — use CSS vars directly:   */
+/*   border-[var(--color-border-warm)]                          */
+
+@theme inline {
+  /* ── Font ──────────────────────────────────────────────── */
+  --font-ui: var(--font-ui);
+  --font-sans: var(--font-ui); /* override Tailwind's default sans */
+
+  /* ── Colors — surfaces ─────────────────────────────────── */
+  --color-page: var(--color-bg-page);
+  --color-warm: var(--color-bg-warm);
+  --color-surface: var(--color-bg-surface);
+  --color-soft: var(--color-bg-soft);
+
+  /* ── Colors — brand ────────────────────────────────────── */
+  --color-brand: var(--color-brand-primary);
+  --color-brand-hover: var(--color-brand-primary-hover);
+
+  /* ── Colors — text ─────────────────────────────────────── */
+  --color-ink: var(--color-text-primary);
+  --color-muted: var(--color-text-muted);
+  --color-faded: var(--color-text-soft);
+  --color-inverse: var(--color-text-inverse);
+
+  /* ── Colors — dark surfaces ────────────────────────────── */
+  --color-dark: var(--color-surface-dark);
+  --color-dark-2: var(--color-surface-dark-2);
+
+  /* ── Colors — accents ──────────────────────────────────── */
+  --color-lilac: var(--color-accent-lilac);
+  --color-blush: var(--color-accent-blush);
+  --color-green-accent: var(--color-accent-green);
+
+  /* ── Colors — semantic ─────────────────────────────────── */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+
+  /* ── Radii (override Tailwind defaults) ─────────────────── */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-pill: var(--radius-pill);
+
+  /* ── Shadows (override Tailwind defaults) ───────────────── */
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-focus: var(--shadow-focus);
+
+  /* ── Motion ─────────────────────────────────────────────── */
+  --ease-standard: var(--ease-standard);
+  --duration-1: var(--duration-1);
+  --duration-2: var(--duration-2);
+  --duration-3: var(--duration-3);
+}
