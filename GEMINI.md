@@ -48,6 +48,8 @@ No test framework is currently configured.
 
 **Border colors** have no Tailwind utility — use CSS vars directly: `border-[var(--color-border-warm)]`.
 
+**`data-test-id` on every component:** Every exported component must have a `data-test-id` attribute on its root element. Format: `{folder}_{component-name-in-kebab-case}`. Examples: `data-test-id="sections_popular-categories"`, `data-test-id="layout_site-header"`, `data-test-id="ui_product-card"`. The folder segment is the immediate parent folder (`layout`, `ui`, `sections`). This is required for all new components — do not skip it.
+
 **Tailwind class order:** Follow the recommended sort order when writing or reviewing `className` strings:
 1. Layout (`display`, `position`, `flex`, `grid`, `overflow`)
 2. Sizing (`w-`, `h-`, `min-`, `max-`)

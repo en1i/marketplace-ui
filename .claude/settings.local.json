@@ -5,7 +5,21 @@
       "Bash(yarn biome *)",
       "Bash(yarn test *)",
       "Bash(yarn build *)",
-      "WebFetch(domain:biomejs.dev)"
+      "WebFetch(domain:biomejs.dev)",
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(yarn format *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(node *)",
+      "Read(//home/alex/dev/marketplace/**)",
+      "Bash(yarn dev *)",
+      "Skill(agent-browser)",
+      "Bash(agent-browser --version)",
+      "Bash(agent-browser skills *)",
+      "Bash(agent-browser open *)",
+      "Bash(agent-browser wait *)",
+      "Bash(agent-browser snapshot *)",
+      "Bash(agent-browser doctor *)",
+      "Bash(agent-browser --auto-connect open https://www.olx.ua/uk/)"
     ]
   }
 }

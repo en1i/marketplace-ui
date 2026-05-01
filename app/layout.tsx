@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Marketplace',
-  description: 'Marketplace for all your needs',
+  title: 'AlphaGranny',
+  description: 'Godlike marketplace for ALPHAs',
   icons: {
     icon: [
       { url: '/favicons/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
