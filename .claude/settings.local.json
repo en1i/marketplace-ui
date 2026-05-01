@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn lint *)",
+      "Bash(yarn biome *)",
+      "Bash(yarn test *)",
+      "Bash(yarn build *)",
+      "WebFetch(domain:biomejs.dev)"
+    ]
+  }
+}

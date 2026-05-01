@@ -48,6 +48,17 @@ No test framework is currently configured.
 
 **Border colors** have no Tailwind utility — use CSS vars directly: `border-[var(--color-border-warm)]`.
 
+**Tailwind class order:** Follow the recommended sort order when writing or reviewing `className` strings:
+1. Layout (`display`, `position`, `flex`, `grid`, `overflow`)
+2. Sizing (`w-`, `h-`, `min-`, `max-`)
+3. Spacing (`m-`, `p-`, `gap-`)
+4. Typography (`font-`, `text-`, `leading-`, `tracking-`)
+5. Visual (`bg-`, `border-`, `shadow-`, `rounded-`, `opacity-`)
+6. Interactivity (`cursor-`, `pointer-events-`, `transition-`)
+7. Variants/modifiers last (`hover:`, `focus:`, `md:`, `lg:`)
+
+Example: `flex items-center gap-4 w-full px-4 py-2 text-sm font-medium bg-page border rounded-pill hover:bg-surface`
+
 ## Docs
 
 - Project setup and deployment guide: [`docs/deployment.md`](docs/deployment.md)
