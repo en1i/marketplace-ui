@@ -1,26 +1,34 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import {
   CaretDownIcon,
   CaretRightIcon,
   ListIcon,
   XIcon,
 } from '@phosphor-icons/react/dist/ssr'
+import { useEffect, useRef, useState } from 'react'
 import { categories } from '@/lib/categories'
 
 export function CategoriesDropdown() {
   const [isOpen, setIsOpen] = useState(false)
-  const [activeDesktop, setActiveDesktop] = useState<string>(categories[0].label)
+  const [activeDesktop, setActiveDesktop] = useState<string>(
+    categories[0].label,
+  )
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') close()
+      if (e.key === 'Escape') {
+        setIsOpen(false)
+        setExpandedMobile(null)
+      }
     }
     function onOutside(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) close()
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setIsOpen(false)
+        setExpandedMobile(null)
+      }
     }
     if (isOpen) {
       document.addEventListener('keydown', onKey)
@@ -71,7 +79,10 @@ export function CategoriesDropdown() {
       {isOpen && (
         <>
           {/* ── Desktop dropdown ── */}
-          <div className="hidden md:flex absolute left-0 top-[calc(100%+10px)] z-50 rounded-md shadow-lg border border-[var(--color-border-warm)] bg-surface overflow-hidden" style={{ maxHeight: 'calc(100vh - 80px)' }}>
+          <div
+            className="hidden md:flex absolute left-0 top-[calc(100%+10px)] z-50 rounded-md shadow-lg border border-[var(--color-border-warm)] bg-surface overflow-hidden"
+            style={{ maxHeight: 'calc(100vh - 80px)' }}
+          >
             {/* Category list */}
             <ul className="w-56 overflow-y-auto py-1 shrink-0">
               {categories.map((cat) => (
@@ -97,7 +108,10 @@ export function CategoriesDropdown() {
                     />
                     <span className="flex-1 text-body-md">{cat.label}</span>
                     {cat.subcategories && cat.subcategories.length > 0 && (
-                      <CaretRightIcon size={13} color="var(--color-text-soft)" />
+                      <CaretRightIcon
+                        size={13}
+                        color="var(--color-text-soft)"
+                      />
                     )}
                   </button>
                 </li>
@@ -106,14 +120,16 @@ export function CategoriesDropdown() {
 
             {/* Sub-categories panel */}
             {activeCat?.subcategories && activeCat.subcategories.length > 0 && (
-              <div className="w-60 border-l border-[var(--color-border-warm)] px-5 py-4 overflow-y-auto shrink-0">
-                <p className="text-heading-sm text-ink mb-3">{activeCat.label}</p>
+              <div className="w-60 border-l border-[var(--color-border-warm)] py-1 overflow-y-auto shrink-0">
+                <p className="text-heading-sm text-ink px-4 py-2.5">
+                  {activeCat.label}
+                </p>
                 <ul className="flex flex-col">
                   {activeCat.subcategories.map((sub) => (
                     <li key={sub}>
                       <a
                         href="/"
-                        className="block py-2 text-body-md text-muted hover:text-ink border-b border-[var(--color-border-subtle)] last:border-0"
+                        className="block px-4 py-2.5 text-body-md text-muted hover:bg-soft hover:text-ink"
                       >
                         {sub}
                       </a>
@@ -142,7 +158,8 @@ export function CategoriesDropdown() {
             {/* Category list */}
             <ul>
               {categories.map((cat) => {
-                const hasSubs = cat.subcategories && cat.subcategories.length > 0
+                const hasSubs =
+                  cat.subcategories && cat.subcategories.length > 0
                 const expanded = expandedMobile === cat.label
                 return (
                   <li key={cat.label}>
@@ -165,20 +182,27 @@ export function CategoriesDropdown() {
                       <span className="flex-1 text-body-md text-ink">
                         {cat.label}
                       </span>
-                      {hasSubs && (
-                        expanded
-                          ? <CaretDownIcon size={16} color="var(--color-text-soft)" />
-                          : <CaretRightIcon size={16} color="var(--color-text-soft)" />
-                      )}
+                      {hasSubs &&
+                        (expanded ? (
+                          <CaretDownIcon
+                            size={16}
+                            color="var(--color-text-soft)"
+                          />
+                        ) : (
+                          <CaretRightIcon
+                            size={16}
+                            color="var(--color-text-soft)"
+                          />
+                        ))}
                     </button>
 
                     {expanded && hasSubs && (
                       <ul className="bg-soft border-b border-[var(--color-border-warm)]">
-                        {cat.subcategories!.map((sub) => (
+                        {cat.subcategories?.map((sub) => (
                           <li key={sub}>
                             <a
                               href="/"
-                              className="flex items-center px-12 py-3 text-body-md text-muted hover:text-ink border-b border-[var(--color-border-subtle)] last:border-0"
+                              className="flex items-center px-12 py-3 text-body-md text-muted hover:bg-soft hover:text-ink border-b border-[var(--color-border-subtle)] last:border-0"
                             >
                               {sub}
                             </a>

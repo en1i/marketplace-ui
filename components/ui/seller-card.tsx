@@ -18,7 +18,11 @@ export function SellerCard({ name, rating, sales }: Seller) {
         <div className="flex flex-col leading-tight">
           <div className="text-body-md font-semibold text-ink">{name}</div>
           <div className="flex items-center gap-1 text-body-sm text-faded">
-            <StarIcon size={12} weight="fill" color="var(--color-brand-primary)" />
+            <StarIcon
+              size={12}
+              weight="fill"
+              color="var(--color-brand-primary)"
+            />
             <span>
               {rating.toFixed(1)} · {sales} sales
             </span>

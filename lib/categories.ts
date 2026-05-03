@@ -40,7 +40,7 @@ export const categories: Category[] = [
       "Children's transport",
       'Feeding & nursing',
       'School supplies',
-      'Other children\'s goods',
+      "Other children's goods",
     ],
   },
   {

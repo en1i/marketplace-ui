@@ -1,4 +1,18 @@
 {
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | { read -r f; [[ \"$f\" == /home/alex/dev/marketplace/marketplace-ui/* ]] && /home/alex/dev/marketplace/marketplace-ui/node_modules/.bin/biome check --write \"$f\"; } 2>/dev/null || true",
+            "statusMessage": "Formatting…"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(yarn lint *)",
