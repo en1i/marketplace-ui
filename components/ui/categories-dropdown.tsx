@@ -84,14 +84,14 @@ export function CategoriesDropdown() {
             style={{ maxHeight: 'calc(100vh - 80px)' }}
           >
             {/* Category list */}
-            <ul className="w-56 overflow-y-auto py-1 shrink-0">
+            <ul className="shrink-0 w-56 overflow-y-auto py-1">
               {categories.map((cat) => (
                 <li key={cat.label}>
                   <button
                     type="button"
                     onMouseEnter={() => setActiveDesktop(cat.label)}
                     onClick={() => setActiveDesktop(cat.label)}
-                    className={`flex items-center gap-3 w-full px-4 py-2.5 text-left cursor-pointer transition-colors duration-100 ${
+                    className={`flex w-full items-center gap-3 px-4 py-2.5 text-left cursor-pointer transition-colors duration-100 ${
                       activeDesktop === cat.label
                         ? 'bg-soft text-ink'
                         : 'text-muted hover:bg-soft hover:text-ink'
@@ -120,7 +120,7 @@ export function CategoriesDropdown() {
 
             {/* Sub-categories panel */}
             {activeCat?.subcategories && activeCat.subcategories.length > 0 && (
-              <div className="w-60 border-l border-[var(--color-border-warm)] py-1 overflow-y-auto shrink-0">
+              <div className="shrink-0 w-60 overflow-y-auto py-1 border-l border-[var(--color-border-warm)]">
                 <p className="text-heading-sm text-ink px-4 py-2.5">
                   {activeCat.label}
                 </p>
@@ -170,7 +170,7 @@ export function CategoriesDropdown() {
                           ? setExpandedMobile(expanded ? null : cat.label)
                           : close()
                       }
-                      className={`flex items-center gap-3 w-full px-4 py-3.5 text-left border-b border-[var(--color-border-warm)] cursor-pointer ${
+                      className={`flex w-full items-center gap-3 border-b border-[var(--color-border-warm)] px-4 py-3.5 text-left cursor-pointer ${
                         expanded ? 'bg-soft' : ''
                       }`}
                     >

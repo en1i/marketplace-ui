@@ -83,7 +83,7 @@ A single sans family is used for the entire UI. The serif previously used for ed
 
 ```css
 :root {
-  --font-ui: "ABCDiatype", -apple-system, "Helvetica Neue", "Droid Sans", Arial, sans-serif;
+  --font-ui: "Aptos", -apple-system, "Helvetica Neue", "Droid Sans", Arial, sans-serif;
 }
 ```
 
@@ -124,7 +124,7 @@ A single sans family is used for the entire UI. The serif previously used for ed
 
 **Section rhythm**
 - **Vertical gap between top-level sections: `--space-6` (32 px).** This is the rhythm used on the main page (hero → popular categories → top sellers → recent listings → trending → footer). Keep it consistent — varying gaps make the page feel uneven.
-- **Page gutter: `--space-5` (20 px)** on the scrollable container, both sides.
+- **Page gutter: `--space-5` (24 px)** on the scrollable container, both sides. Note: the `Container` component uses Tailwind `px-5` (20 px) — this is a Tailwind utility, not the design token.
 - **Title → grid: `--space-2` to `--space-3`** (8–12 px).
 - **Grid gap (any 4-up / 5-up grid): `--space-4` (16 px)**, both row and column. This includes Popular Categories tiles, Top Sellers cards, Recent Listings cards, and Trending. Don't mix 8/10/14 px gaps across grids on the same page.
 

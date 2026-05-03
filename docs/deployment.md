@@ -111,13 +111,15 @@ The production environment runs on a single VPS using k3s (Kubernetes). Deployme
 
 ### How It Works
 
-1. Push to `master` triggers the [publish-image workflow](../.github/workflows/publish-image.yml)
+1. Push to `master` triggers the publish-image GitHub Actions workflow (defined in the root workspace, not in this sub-repo)
 2. GitHub Actions builds `Dockerfile` and pushes two tags to GHCR:
    - `ghcr.io/en1i/marketplace-ui:latest`
    - `ghcr.io/en1i/marketplace-ui:sha-<commit>`
-3. Flux detects the new image digest, updates the image pin in `k8s/client-deployment.yaml`, and commits the change
+3. Flux detects the new image digest, updates the image pin in the k8s manifests (maintained in the root workspace under `k8s/`), and commits the change
 4. k3s applies the updated deployment and rolls out the new pod
 5. The UI is served at `https://alphagranny.com` via Traefik Gateway API
+
+> The only workflow in this sub-repo is `.github/workflows/tests.yml`, which runs linting and tests on pull requests.
 
 ### Verify a Deployment
 

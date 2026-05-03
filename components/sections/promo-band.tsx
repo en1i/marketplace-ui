@@ -15,7 +15,7 @@ export function PromoBand() {
           </div>
           <button
             type="button"
-            className="bg-brand hover:bg-brand-hover text-inverse rounded-pill px-5 py-2.5 w-full text-label cursor-pointer sm:w-auto"
+            className="w-full rounded-pill bg-brand px-5 py-2.5 text-label text-inverse cursor-pointer hover:bg-brand-hover sm:w-auto"
           >
             Post an ad
           </button>

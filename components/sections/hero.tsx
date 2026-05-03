@@ -12,7 +12,7 @@ export function Hero({ mascot = 'none' }: { mascot?: Mascot }) {
   return (
     <section data-test-id="sections_hero" className="bg-warm">
       <Container>
-        <div className="relative flex flex-col items-center text-center py-4 px-5 min-h-[60px] gap-4 md:py-9 md:min-h-[210px]">
+        <div className="relative flex flex-col items-center text-center min-h-[60px] px-5 py-4 gap-4 md:min-h-[210px] md:py-9">
           <h1 className="hidden md:block text-display-lg text-ink">
             Find anything, sell anything
           </h1>
@@ -24,12 +24,12 @@ export function Hero({ mascot = 'none' }: { mascot?: Mascot }) {
               type="text"
               readOnly
               placeholder="What are you looking for?"
-              className="flex-1 bg-surface text-ink text-body-md border border-[var(--color-border-warm)] border-r-0 rounded-l-pill px-5 h-11 outline-none placeholder:text-faded"
+              className="flex-1 h-11 px-5 text-body-md text-ink bg-surface rounded-l-pill border border-[var(--color-border-warm)] border-r-0 outline-none placeholder:text-faded"
             />
             <button
               type="button"
               aria-label="Search"
-              className="flex items-center justify-center bg-brand hover:bg-brand-hover text-inverse rounded-r-pill px-5 h-11 cursor-pointer"
+              className="flex items-center justify-center h-11 px-5 text-inverse bg-brand rounded-r-pill cursor-pointer hover:bg-brand-hover"
             >
               <MagnifyingGlassIcon size={20} weight="bold" />
             </button>

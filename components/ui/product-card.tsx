@@ -17,7 +17,7 @@ export function ProductCard({ title, shop, price, badge }: Product) {
           <HeartIcon size={16} weight="regular" />
         </button>
         {badge && (
-          <span className="absolute bottom-2 left-2 bg-green-accent text-ink text-body-xs font-semibold rounded-pill px-2 py-0.5">
+          <span className="absolute bottom-2 left-2 rounded-pill bg-green-accent px-2 py-0.5 text-body-xs font-semibold text-ink">
             {badge}
           </span>
         )}

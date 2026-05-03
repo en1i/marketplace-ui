@@ -8,16 +8,16 @@ export function PopularCategories() {
         {categories.map(({ label, Icon }) => (
           <div
             key={label}
-            className="flex flex-col items-center gap-2 w-20 shrink-0"
+            className="flex w-20 shrink-0 flex-col items-center gap-2"
           >
-            <div className="image-placeholder rounded-md w-[70px] h-[70px]">
+            <div className="h-[70px] w-[70px] image-placeholder rounded-md">
               <Icon
                 size={28}
                 weight="regular"
                 color="var(--color-text-primary)"
               />
             </div>
-            <div className="text-body-sm text-ink text-center">{label}</div>
+            <div className="text-center text-body-sm text-ink">{label}</div>
           </div>
         ))}
       </div>

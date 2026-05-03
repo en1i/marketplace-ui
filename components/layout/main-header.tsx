@@ -35,12 +35,12 @@ export function MainHeader() {
               type="text"
               readOnly
               placeholder="Search for anything…"
-              className="flex-1 min-w-0 bg-surface text-ink text-body-md border border-[var(--color-border-warm)] border-r-0 rounded-l-pill px-4 h-10 outline-none placeholder:text-faded"
+              className="flex-1 min-w-0 h-10 px-4 text-body-md text-ink bg-surface rounded-l-pill border border-[var(--color-border-warm)] border-r-0 outline-none placeholder:text-faded"
             />
             <button
               type="button"
               aria-label="Search"
-              className="flex items-center justify-center bg-brand hover:bg-brand-hover text-inverse rounded-r-pill px-4 h-10 shrink-0 cursor-pointer"
+              className="flex shrink-0 items-center justify-center h-10 px-4 text-inverse bg-brand rounded-r-pill cursor-pointer hover:bg-brand-hover"
             >
               <MagnifyingGlassIcon size={18} weight="bold" />
             </button>
@@ -79,12 +79,12 @@ export function MainHeader() {
             type="text"
             readOnly
             placeholder="Search for anything…"
-            className="flex-1 bg-surface text-ink text-body-md rounded-l-pill px-4 h-10 outline-none placeholder:text-faded"
+            className="flex-1 h-10 px-4 text-body-md text-ink bg-surface rounded-l-pill outline-none placeholder:text-faded"
           />
           <button
             type="button"
             aria-label="Search"
-            className="flex items-center justify-center bg-brand hover:bg-brand-hover text-inverse rounded-r-pill px-4 h-10 shrink-0 cursor-pointer"
+            className="flex shrink-0 items-center justify-center h-10 px-4 text-inverse bg-brand rounded-r-pill cursor-pointer hover:bg-brand-hover"
           >
             <MagnifyingGlassIcon size={18} weight="bold" />
           </button>
