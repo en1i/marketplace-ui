@@ -1,6 +1,6 @@
 import { Container } from '@/components/layout/container'
-import { SiteFooter } from '@/components/layout/site-footer'
-import { SiteHeader } from '@/components/layout/site-header'
+import { MainFooter } from '@/components/layout/main-footer'
+import { MainHeader } from '@/components/layout/main-header'
 import { Hero } from '@/components/sections/hero'
 import { PopularCategories } from '@/components/sections/popular-categories'
 import { ProductGridSection } from '@/components/sections/product-grid-section'
@@ -11,7 +11,7 @@ import { recentListings, trending } from '@/lib/placeholder-data'
 export default function Page() {
   return (
     <>
-      <SiteHeader />
+      <MainHeader />
       <main>
         <Hero />
         <Container>
@@ -31,7 +31,7 @@ export default function Page() {
           </div>
         </Container>
       </main>
-      <SiteFooter />
+      <MainFooter />
     </>
   )
 }

@@ -19,7 +19,9 @@
       "Bash(agent-browser wait *)",
       "Bash(agent-browser snapshot *)",
       "Bash(agent-browser doctor *)",
-      "Bash(agent-browser --auto-connect open https://www.olx.ua/uk/)"
+      "Bash(agent-browser get *)",
+      "Bash(agent-browser click *)",
+      "Skill(update-config)"
     ]
   }
 }

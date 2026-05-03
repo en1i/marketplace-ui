@@ -7,21 +7,19 @@ type Mascot = 'none' | 'right' | 'peek'
 const cities = ['New York', 'Los Angeles', 'Chicago', 'Miami']
 
 export function Hero({ mascot = 'none' }: { mascot?: Mascot }) {
-  // Mascot is a future placement; not rendered yet. Reference the prop so it
-  // is not flagged as unused while the API stays stable.
   void mascot
 
   return (
     <section data-test-id="sections_hero" className="bg-warm">
       <Container>
-        <div className="relative flex flex-col items-center text-center py-9 px-5 min-h-[210px] gap-4">
-          <h1 className="text-display-lg text-ink">
+        <div className="relative flex flex-col items-center text-center py-4 px-5 min-h-[60px] gap-4 md:py-9 md:min-h-[210px]">
+          <h1 className="hidden md:block text-display-lg text-ink">
             Find anything, sell anything
           </h1>
           <p className="text-body-lg text-muted">
             Local marketplace — buy &amp; sell near you
           </p>
-          <div className="flex w-full max-w-[600px] mt-2">
+          <div className="hidden md:flex w-full max-w-[600px] mt-2">
             <input
               type="text"
               readOnly
@@ -36,7 +34,7 @@ export function Hero({ mascot = 'none' }: { mascot?: Mascot }) {
               <MagnifyingGlassIcon size={20} weight="bold" />
             </button>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-1">
+          <div className="hidden md:flex flex-wrap items-center justify-center gap-2 mt-1">
             <Chip active>
               <MapPinIcon size={14} weight="fill" />
               All cities

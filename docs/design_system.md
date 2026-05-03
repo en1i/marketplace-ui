@@ -173,7 +173,11 @@ Most depth comes from color, not shadow.
 - Hover on tiles: subtle image scale (1.02), title color shift.
 - Slider arrows: opacity/transform only — never animate layout.
 
-### 2.7 Breakpoints & Layout
+### 2.7 Browser & Device Support
+
+Target modern evergreen browsers: **Chrome, Firefox, and Safari** — desktop and mobile. Design and implement **mobile-first**: base styles target small screens, larger breakpoints are added with `min-width` media queries.
+
+### 2.8 Breakpoints & Layout
 
 ```css
 --bp-sm:  480px;

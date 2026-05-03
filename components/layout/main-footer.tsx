@@ -24,12 +24,12 @@ const languages = [
   { code: 'RU', active: false },
 ]
 
-export function SiteFooter() {
+export function MainFooter() {
   return (
     <footer data-test-id="layout_site-footer" className="bg-warm">
       <Container>
         <div className="py-10">
-          <div className="grid grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-2">
                 <Image src="/images/granny.png" alt="" width={32} height={32} />

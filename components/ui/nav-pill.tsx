@@ -18,7 +18,10 @@ export function NavPill({ icon, label, count, variant = 'outline' }: Props) {
   return (
     <div data-test-id="ui_nav-pill" className={`${base} ${styles}`}>
       <span className="inline-flex items-center text-[18px]">{icon}</span>
-      <span>
+      {count != null && count > 0 && (
+        <span className="text-[11px] font-semibold lg:hidden">({count})</span>
+      )}
+      <span className="hidden lg:inline whitespace-nowrap">
         {label}
         {count != null ? ` (${count})` : ''}
       </span>
