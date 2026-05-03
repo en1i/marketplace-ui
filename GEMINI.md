@@ -10,32 +10,28 @@ This file provides guidance to Gemini Gemini Code Assist (codeassist.google) whe
 
 This file provides guidance to Codex when working with code in this repository.
 
-## Project Overview
+## Project Context
 
-Marketplace UI — a Next.js 16 application with React 19, TypeScript (strict mode), and Tailwind CSS 4.
+**Always read [README.md](README.md) alongside this file.** It covers project overview, tech stack, commands, architecture, and an index of all docs — lazy-load individual docs from there only when the task requires it.
 
-## Commands
+**Keep docs in sync with code.** After any change that affects documented behavior (components, architecture, commands, design system, deployment), recheck the relevant doc files and update them in the same change.
 
-- **Dev server:** `yarn dev` (localhost:3000)
-- **Build:** `yarn build`
-- **Lint:** `yarn lint` (runs `biome check`)
-- **Format:** `yarn format` (runs `biome format --write`)
+## Coding Conventions
 
-No test framework is currently configured.
+**Border colors** have no Tailwind utility — use CSS vars directly: `border-[var(--color-border-warm)]`.
 
-## Architecture
+**`data-test-id` on every component:** Every exported component must have a `data-test-id` attribute on its root element. Format: `{folder}_{component-name-in-kebab-case}`. Examples: `data-test-id="sections_popular-categories"`, `data-test-id="layout_site-header"`, `data-test-id="ui_product-card"`. The folder segment is the immediate parent folder (`layout`, `ui`, `sections`). This is required for all new components — do not skip it.
 
-- **Routing:** Next.js App Router (`app/` directory), file-based routing
-- **Styling:** Tailwind CSS 4 with CSS custom properties for theming; dark mode via `prefers-color-scheme`
-- **Linting/Formatting:** Biome (not ESLint/Prettier) — 2-space indentation, auto import organization
-- **React Compiler:** Enabled in `next.config.ts` for automatic memoization
-- **Path alias:** `@/*` maps to the project root
-- **Package manager:** Yarn
-- **Fonts:** Local system sans and mono stacks via CSS custom properties
+**Tailwind class order:** Follow the recommended sort order when writing or reviewing `className` strings:
+1. Layout (`display`, `position`, `flex`, `grid`, `overflow`)
+2. Sizing (`w-`, `h-`, `min-`, `max-`)
+3. Spacing (`m-`, `p-`, `gap-`)
+4. Typography (`font-`, `text-`, `leading-`, `tracking-`)
+5. Visual (`bg-`, `border-`, `shadow-`, `rounded-`, `opacity-`)
+6. Interactivity (`cursor-`, `pointer-events-`, `transition-`)
+7. Variants/modifiers last (`hover:`, `focus:`, `md:`, `lg:`)
 
-## Docs
-
-- Project setup and deployment guide: [`app/docs/deployment.md`](app/docs/deployment.md)
+Example: `flex items-center w-full px-4 py-2 gap-4 font-medium text-sm bg-page border rounded-pill hover:bg-surface`
 
 ---
 
@@ -107,11 +103,9 @@ Before completing any command/skill change, verify:
 
 **IMPORTANT**: When browser debugging is needed:
 
-1. **First, check for existing browser**: Use `tabs_context_mcp` to check if there's already a running browser with a Marketplace tab (check for `localhost:8020` URL)
-2. **Connect automatically**: If the Marketplace tab exists, connect to it without asking the user
-3. **Ask only if needed**: Only if the tab is not found or browser is not running, ask the user to open a browser in debugging mode
-
-This ensures a smoother debugging workflow by reusing existing browser sessions when available.
+1. **Use `agent-browser`** — it is configured with `AGENT_BROWSER_AUTO_CONNECT=1` so it automatically connects to the running browser session
+2. **Marketplace UI is at `http://localhost:3000`** — use this URL for all browser debugging; `localhost:3001` is the API, not the UI
+3. **Ask the user only if needed** — if no browser session is reachable, ask the user to open one
 
 ---
 

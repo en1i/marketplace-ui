@@ -1,0 +1,86 @@
+/* AlphaGranny Design System — base layer */
+/* Dark mode intentionally absent. The AlphaGranny design system is light-only. */
+/* If dark mode is added in future, define a separate token layer — not @media. */
+
+@layer base {
+  @font-face {
+    font-family: "Aptos";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Aptos.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Aptos";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/Aptos-SemiBold.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Aptos";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("/fonts/Aptos-Bold.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Aptos";
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url("/fonts/Aptos-ExtraBold.ttf") format("truetype");
+  }
+
+  body {
+    background-color: var(--color-bg-page);
+    color: var(--color-text-primary);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: none;
+    }
+  }
+}
+
+@layer utilities {
+  .image-placeholder {
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(196, 184, 168, 0.4),
+      rgba(196, 184, 168, 0.4) 2px,
+      var(--color-bg-soft) 2px,
+      var(--color-bg-soft) 12px
+    );
+    border: 1.5px solid var(--color-border-warm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-soft);
+  }
+}

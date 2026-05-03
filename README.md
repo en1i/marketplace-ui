@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Marketplace UI
+
+Frontend for [alphagranny.com](https://alphagranny.com) — a Next.js 16 app with React 19, TypeScript (strict), and Tailwind CSS 4.
+
+Production: **https://alphagranny.com**
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16, App Router |
+| UI | React 19, TypeScript strict |
+| Styling | Tailwind CSS 4 + custom design token system |
+| Linting / Formatting | Biome (not ESLint/Prettier) |
+| Package manager | Yarn |
+| Testing | Vitest + jsdom |
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn install
+yarn dev       # dev server → http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+See [`docs/deployment.md`](docs/deployment.md) for Docker / Dev Container and production deployment.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Commands
 
-This project uses a local system font stack so production builds do not depend on fetching fonts from external providers.
+| Command | What it does |
+|---------|-------------|
+| `yarn dev` | Start dev server (localhost:3000, hot reload) |
+| `yarn build` | Production build |
+| `yarn lint` | Lint with Biome |
+| `yarn lint --write` | Lint + auto-fix all safe issues |
+| `yarn format` | Format with Biome |
+| `yarn test` | Run tests with Vitest |
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/              # Next.js routes (App Router, file-based)
+components/
+  layout/         # Header, footer, container
+  sections/       # Page sections (hero, categories, top sellers…)
+  ui/             # Reusable primitives (card, chip, nav-pill…)
+lib/              # Shared data and utilities (categories, placeholder data)
+styles/           # Design system — loaded in app/globals.css
+  tokens.css      # All :root CSS custom properties
+  theme.css       # Maps tokens to Tailwind utilities
+  typography.css  # 9-step type scale utilities
+  base.css        # Font faces, body defaults, focus ring, scrollbar
+public/
+  fonts/          # Aptos (400/600/700/800) — no external font fetching
+  images/         # Static images (granny mascot, etc.)
+docs/             # Project documentation (see below)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Path alias:** `@/*` maps to the project root.  
+**React Compiler:** enabled in `next.config.ts` for automatic memoization.  
+**Dark mode:** intentionally absent — AlphaGranny is light-only.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Documentation
 
-## Deploy on Vercel
+| Doc | Summary |
+|-----|---------|
+| [`docs/design_system.md`](docs/design_system.md) | Brand foundations · color tokens · typography scale (9 steps) · spacing · radii · shadows · motion · components (header, hero, cards, footer…) · accessibility · page composition |
+| [`docs/deployment.md`](docs/deployment.md) | Local dev (direct + VS Code Dev Container) · production pipeline (GitHub Actions → GHCR → Flux → k3s on VPS) · troubleshooting |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Pre-commit hook** (Husky) runs `yarn lint && yarn test` before every commit.
+
+**Format on save:** install the [Biome VS Code extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome) — workspace settings in `.vscode/settings.json` are already configured.
+
+**Manual fix-all:**
+```bash
+yarn lint --write   # fixes lint + formatting in one pass
+```

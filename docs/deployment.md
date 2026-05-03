@@ -44,16 +44,31 @@ This reduces accidental leakage of local machine details into prod-like workflow
 
 `devcontainer.json` forwards port `3000` and auto-opens it in the browser.
 
-## Start Working Inside Container
+## Running Locally
 
-### Prerequisites
+### Option A: Direct (simplest)
+
+Requires Node.js installed locally.
+
+```bash
+yarn install
+yarn dev
+```
+
+Open `http://localhost:3000`. The dev server hot-reloads on file changes.
+
+### Option B: VS Code Dev Container
+
+Runs the app in a Docker container with source mounted. Requires Docker Engine, VS Code, and the Dev Containers extension (`ms-vscode-remote.remote-containers`).
+
+#### Prerequisites
 
 - Docker Engine + Docker Compose
 - VS Code
 - Dev Containers extension (`ms-vscode-remote.remote-containers`)
 - Optional (SSH git remotes only): local `~/.ssh` key and `~/.gitconfig`
 
-### Steps
+#### Steps
 
 1. Clone and open the repository in VS Code.
 2. Run: `Dev Containers: Reopen in Container`.
@@ -90,69 +105,45 @@ Expected:
 - Port not auto-opening:
   - Open VS Code Ports panel and manually open forwarded `3000`.
 
-## Production Deployment Guide
+## Production Deployment
 
-Use `Dockerfile` for production builds. Do not use `Dockerfile.dev` in production.
+The production environment runs on a single VPS using k3s (Kubernetes). Deployments are fully automated via GitHub Actions and Flux — no manual steps are needed for normal releases.
 
-### Option A: Deploy with Compose (current repo default)
+### How It Works
 
-This uses `compose.yml`, which already points to `Dockerfile`.
+1. Push to `master` triggers the publish-image GitHub Actions workflow (defined in the root workspace, not in this sub-repo)
+2. GitHub Actions builds `Dockerfile` and pushes two tags to GHCR:
+   - `ghcr.io/en1i/marketplace-ui:latest`
+   - `ghcr.io/en1i/marketplace-ui:sha-<commit>`
+3. Flux detects the new image digest, updates the image pin in the k8s manifests (maintained in the root workspace under `k8s/`), and commits the change
+4. k3s applies the updated deployment and rolls out the new pod
+5. The UI is served at `https://alphagranny.com` via Traefik Gateway API
 
-```bash
-docker compose -f compose.yml build
-docker compose -f compose.yml up -d
-docker compose -f compose.yml ps
-```
+> The only workflow in this sub-repo is `.github/workflows/tests.yml`, which runs linting and tests on pull requests.
 
-Stop:
+### Verify a Deployment
 
-```bash
-docker compose -f compose.yml down
-```
-
-### Option B: Build once, push to registry, run on server
-
-#### 1) Build and tag image
+After pushing to `master`, SSH into the VPS and check that the rollout completed:
 
 ```bash
-docker build -f Dockerfile -t marketplace-ui:latest .
+kubectl rollout status deployment/client-deployment
+kubectl get pods -l component=ui
+kubectl logs -l component=ui --tail=50
 ```
 
-#### 2) Tag for your registry
+> These commands require `kubectl` and run on the production VPS, not locally.
 
-Example:
+### Force a Re-deploy Without a Code Change
+
+Trigger the workflow manually from the GitHub Actions tab (`workflow_dispatch`), or re-tag and push the image:
 
 ```bash
-docker tag marketplace-ui:latest <registry>/<namespace>/marketplace-ui:<tag>
+docker pull ghcr.io/en1i/marketplace-ui:latest
+docker push ghcr.io/en1i/marketplace-ui:latest
 ```
 
-#### 3) Push image
+### Production URL
 
-```bash
-docker push <registry>/<namespace>/marketplace-ui:<tag>
-```
+- `https://alphagranny.com` — HTTP redirects to HTTPS automatically
 
-#### 4) Run on server
-
-```bash
-docker pull <registry>/<namespace>/marketplace-ui:<tag>
-docker run -d \
-  --name marketplace-ui \
-  --restart unless-stopped \
-  -p 3000:3000 \
-  <registry>/<namespace>/marketplace-ui:<tag>
-```
-
-### Recommended production checks
-
-- Verify health:
-
-```bash
-curl -I http://localhost:3000
-```
-
-- Check logs:
-
-```bash
-docker logs -f marketplace-ui
-```
+For full infrastructure details (k3s setup, Traefik routing, SSL, database) see the root [`docs/`](../../docs/) folder.
