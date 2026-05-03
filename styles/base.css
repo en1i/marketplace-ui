@@ -47,4 +47,40 @@
     outline: 3px solid var(--color-focus);
     outline-offset: 2px;
   }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: none;
+    }
+  }
+}
+
+@layer utilities {
+  .image-placeholder {
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(196, 184, 168, 0.4),
+      rgba(196, 184, 168, 0.4) 2px,
+      var(--color-bg-soft) 2px,
+      var(--color-bg-soft) 12px
+    );
+    border: 1.5px solid var(--color-border-warm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-soft);
+  }
 }
